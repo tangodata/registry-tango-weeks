@@ -1,9 +1,18 @@
 #!/usr/bin/python
 
 import yaml
-import os
-import fnmatch
-import datetime
+import os, fnmatch, datetime
+
+
+def url(x):
+  if ('webdomain' in x):
+    return x['webdomain']
+  if ('fbpage' in x):
+    return x['fbpage']
+  if ('fbgroup' in x):
+    return x['fbgroup']
+  return 'NONE'
+
 
 # take x, push it into arrays of that country
 def process2(x) :
@@ -18,6 +27,7 @@ def dumpdata(m) :
   i=0
   for item in weeks:
     print ("%s-%s : %s" % (item['country'], item['city'], item['longname'])),
+    print ("[%s]" % url(item)),
     i=i+1
     if (m in item):
       thisyear = item[m]
@@ -52,4 +62,4 @@ for dirname, subdirlist, filelist in os.walk(rootdir):
         print (exc)
 
 print "===============\n"
-dumpdata('y2020')
+dumpdata('y2019')
