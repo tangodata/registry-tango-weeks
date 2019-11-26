@@ -1,0 +1,22 @@
+country: sg
+city: sin
+longname: Full Name
+shortname: short name
+organiser:
+
+website:
+fbpage:
+fbgroup:
+email:
+
+#----------------------------------------------------------------------------
+y2020:
+  startdate:
+  enddate:
+  fbevent:
+
+#----------------------------------------------------------------------------
+y2019:
+  startdate:
+  enddate:
+  fbevent:
