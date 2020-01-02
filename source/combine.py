@@ -23,10 +23,13 @@ def process2(x) :
     weeks[c]=[]
   weeks[c].append(x)
 
+def myconvert(o):
+  return o.strftime('%Y%m%dT000000')
+
 # output decoratively
 def dumpdata(m) :
   #print (json.dumps(weeks, indent=4, sort_keys=True))
-  print (weeks)
+  print (json.dumps(weeks, default=myconvert))
 
 def dumpdatapr(m) :
   i=0
@@ -34,13 +37,14 @@ def dumpdatapr(m) :
     print ("%s-%s : %s" % (item['country'], item['city'], item['longname'])),
     print ("[%s]" % url(item)),
     i=i+1
-    if (m in item):
-      thisyear = item[m]
-      sd=thisyear['startdate']
-      ed=thisyear['enddate']
-      print sd.strftime('%Y-%m-%d'),'-',
-      print ed.strftime('%Y-%m-%d'),'==',
-      print sd.isocalendar()[1],
+    print (json.dumps(item,default=myconvert))
+
+    #thisyear = item[m]
+    #sd=thisyear['startdate']
+    #ed=thisyear['enddate']
+    #print sd.strftime('%Y-%m-%d'),'-',
+    #print ed.strftime('%Y-%m-%d'),'==',
+    #print sd.isocalendar()[1],
     print
   print 'Total (%s)' % i
 
