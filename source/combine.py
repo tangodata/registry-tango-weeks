@@ -2,6 +2,7 @@
 
 import yaml
 import os, fnmatch, datetime
+import json
 
 
 def url(x):
@@ -24,6 +25,10 @@ def process2(x) :
 
 # output decoratively
 def dumpdata(m) :
+  #print (json.dumps(weeks, indent=4, sort_keys=True))
+  print (weeks)
+
+def dumpdatapr(m) :
   i=0
   for item in weeks:
     print ("%s-%s : %s" % (item['country'], item['city'], item['longname'])),
@@ -51,9 +56,9 @@ pattern = '*.yml'
 
 # start at the root of repo by calling 'source/combine.py'
 for dirname, subdirlist, filelist in os.walk(rootdir):
-  print ('goto %s' % dirname)
+  # print ('goto %s' % dirname)
   for fname in fnmatch.filter(filelist,pattern):
-    print ('\t%s' % fname)
+    # print ('\t%s' % fname)
     with open(dirname+'/'+fname,'r') as stream:
       try:
         x= yaml.safe_load(stream)
@@ -61,5 +66,5 @@ for dirname, subdirlist, filelist in os.walk(rootdir):
       except yaml.YAMLError as exc:
         print (exc)
 
-print "===============\n"
+#print "===============\n"
 dumpdata('y2019')
